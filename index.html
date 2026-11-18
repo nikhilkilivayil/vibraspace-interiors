@@ -188,21 +188,26 @@ nav.links a:hover::after{transform:scaleX(1)}
 @media (max-width:520px){.steps{grid-template-columns:1fr}}
 
 /* team */
-.team{display:grid;grid-template-columns:repeat(2,minmax(0,330px));gap:44px;padding-left:14px}
-.person{position:relative}
-.person:nth-child(even){margin-top:56px}
-.portrait{position:relative;aspect-ratio:4/5;border-radius:999px 999px 0 0;overflow:hidden;display:grid;place-items:center;font-family:var(--display);font-size:7rem;color:var(--gold-hi);background:radial-gradient(circle at 50% 30%,rgba(214,165,72,.28),var(--panel) 70%)}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:saturate(.85);transition:transform 1.2s var(--ease),filter .6s}
+#team{background:var(--panel);overflow:hidden}
+#team::before{content:"FOUNDERS";position:absolute;right:-20px;top:26px;font-family:var(--display);font-size:clamp(5rem,15vw,13rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(214,165,72,.13);pointer-events:none;white-space:nowrap}
+.team-wrap{position:relative;display:grid;grid-template-columns:.78fr 1.22fr;gap:64px;align-items:center}
+.team-wrap .btn{margin-top:30px}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.person{position:relative;background:var(--ink);border:1px solid var(--line);transition:border-color .5s,transform .6s var(--ease)}
+.person:hover{border-color:rgba(214,165,72,.7);transform:translateY(-6px)}
+.portrait{position:relative;aspect-ratio:4/5;overflow:hidden;display:grid;place-items:center;font-family:var(--display);font-size:7rem;color:var(--gold-hi);background:radial-gradient(circle at 50% 30%,rgba(214,165,72,.28),var(--panel) 70%)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:saturate(.88);transition:transform 1.2s var(--ease),filter .6s}
 .person:hover .portrait img{transform:scale(1.06);filter:saturate(1.05)}
-.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,9,7,.55))}
-.person::before{content:"";position:absolute;left:-14px;right:14px;top:-14px;aspect-ratio:4/5;border:1px solid rgba(214,165,72,.5);border-radius:999px 999px 0 0;transition:transform .7s var(--ease)}
-.person:hover::before{transform:translate(6px,6px)}
-.person .who{position:relative;padding:20px 0 0;margin-top:18px;border-top:1px solid var(--line)}
-.person .who::before{content:"";position:absolute;left:0;top:-1px;width:56px;height:1px;background:var(--gold-hi);transition:width .7s var(--ease)}
-.person:hover .who::before{width:100%}
-.person h3{font-size:2.1rem}
-.person p{margin:6px 0 0;color:var(--gold);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase}
-@media (max-width:640px){.team{grid-template-columns:1fr;max-width:330px}.person:nth-child(even){margin-top:0}}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,7,.35) 0%,transparent 28%,transparent 62%,rgba(10,9,7,.8))}
+.portrait .frame{position:absolute;inset:12px;border:1px solid rgba(244,216,143,.75);z-index:2;clip-path:inset(0 100% 0 0);transition:clip-path .9s var(--ease)}
+.person:hover .frame{clip-path:inset(0)}
+.portrait .no{position:absolute;left:18px;top:12px;z-index:3;font-size:2.4rem;line-height:1;color:var(--gold-hi)}
+.person .who{padding:22px 22px 24px;border-top:1px solid var(--gold)}
+.person h3{font-size:2rem}
+.person .role{margin:6px 0 0;color:var(--gold);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
+.person .note{margin:12px 0 0;color:var(--mute);font-size:.93rem;line-height:1.5}
+@media (max-width:980px){.team-wrap{grid-template-columns:1fr;gap:40px}}
+@media (max-width:520px){.team{grid-template-columns:1fr;max-width:360px}}
 
 /* social */
 .social{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -358,9 +363,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 </section>
 
 <section id="team" style="border-top:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div><p class="eyebrow">The people</p><h2>Who you will <em>work with.</em></h2></div>
+  <div class="wrap team-wrap">
+    <div class="rv">
+      <p class="eyebrow">The people</p>
+      <h2>Who you will <em>work with.</em></h2>
+      <p class="lead">Vibra Space is led by its two founders. One stays with you from the first call to the final design, the other runs the site until handover.</p>
+      <a class="btn ghost" href="#contact">Talk to the founders</a>
     </div>
     <div class="team" id="teamList"></div>
   </div>
@@ -454,10 +462,12 @@ const SERVICES = [
   ["Commercial spaces","Offices, shops and clinics designed for daily use.","office"]
 ];
 
-/* photo is optional: "media/prajith.jpg" */
+/* photo and note are optional */
 const TEAM = [
-  { name:"Midhun",  role:"Co-Founder and Chief Executive Officer", photo:"media/midhun.jpg" },
-  { name:"Prajith", role:"Co-Founder and Chief Operating Officer", photo:"media/prajith.jpg" }
+  { name:"Midhun",  role:"Co-Founder and Chief Executive Officer", photo:"media/midhun.jpg",
+    note:"Your first point of contact, from the enquiry call to design sign-off." },
+  { name:"Prajith", role:"Co-Founder and Chief Operating Officer", photo:"media/prajith.jpg",
+    note:"Leads production and site work on every project through to handover." }
 ];
 /* ===================== end of editable block ===================== */
 
@@ -510,7 +520,9 @@ showSpace(0); autoSpace();
 TEAM.forEach((p, i) => {
   const c = el("div", "person rv"), av = el("div", "portrait"); c.style.setProperty("--d", i * .12 + "s");
   if (p.photo) { const im = el("img"); im.src = p.photo; im.alt = p.name; av.append(im); } else av.textContent = p.name[0];
-  const t = el("div", "who"); t.append(el("h3", "", p.name), el("p", "", p.role));
+  av.append(el("span", "frame"), el("span", "no", String(i + 1).padStart(2, "0")));
+  const t = el("div", "who"); t.append(el("h3", "", p.name), el("p", "role", p.role));
+  if (p.note) t.append(el("p", "note", p.note));
   c.append(av, t); $("teamList").append(c);
 });
 
