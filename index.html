@@ -188,14 +188,21 @@ nav.links a:hover::after{transform:scaleX(1)}
 @media (max-width:520px){.steps{grid-template-columns:1fr}}
 
 /* team */
-.team{display:grid;grid-template-columns:repeat(2,minmax(0,400px));gap:22px}
-.person{position:relative;display:flex;gap:20px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:24px;transition:border-color .4s,transform .5s var(--ease)}
-.person:hover{border-color:var(--gold);transform:translateY(-5px)}
-.avatar{width:86px;height:104px;flex:none;border:1px solid var(--gold);border-radius:60px 60px 0 0;display:grid;place-items:center;font-family:var(--display);font-size:2.4rem;color:var(--gold-hi);overflow:hidden;background:radial-gradient(circle at 50% 20%,rgba(214,165,72,.2),transparent 70%)}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.person h3{font-size:1.7rem}
-.person p{margin:4px 0 0;color:var(--mute);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
-@media (max-width:640px){.team{grid-template-columns:1fr}}
+.team{display:grid;grid-template-columns:repeat(2,minmax(0,330px));gap:44px;padding-left:14px}
+.person{position:relative}
+.person:nth-child(even){margin-top:56px}
+.portrait{position:relative;aspect-ratio:4/5;border-radius:999px 999px 0 0;overflow:hidden;display:grid;place-items:center;font-family:var(--display);font-size:7rem;color:var(--gold-hi);background:radial-gradient(circle at 50% 30%,rgba(214,165,72,.28),var(--panel) 70%)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:saturate(.85);transition:transform 1.2s var(--ease),filter .6s}
+.person:hover .portrait img{transform:scale(1.06);filter:saturate(1.05)}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,9,7,.55))}
+.person::before{content:"";position:absolute;left:-14px;right:14px;top:-14px;aspect-ratio:4/5;border:1px solid rgba(214,165,72,.5);border-radius:999px 999px 0 0;transition:transform .7s var(--ease)}
+.person:hover::before{transform:translate(6px,6px)}
+.person .who{position:relative;padding:20px 0 0;margin-top:18px;border-top:1px solid var(--line)}
+.person .who::before{content:"";position:absolute;left:0;top:-1px;width:56px;height:1px;background:var(--gold-hi);transition:width .7s var(--ease)}
+.person:hover .who::before{width:100%}
+.person h3{font-size:2.1rem}
+.person p{margin:6px 0 0;color:var(--gold);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase}
+@media (max-width:640px){.team{grid-template-columns:1fr;max-width:330px}.person:nth-child(even){margin-top:0}}
 
 /* social */
 .social{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -501,9 +508,9 @@ showSpace(0); autoSpace();
 
 /* team */
 TEAM.forEach((p, i) => {
-  const c = el("div", "person rv"), av = el("div", "avatar"); c.style.setProperty("--d", i * .12 + "s");
+  const c = el("div", "person rv"), av = el("div", "portrait"); c.style.setProperty("--d", i * .12 + "s");
   if (p.photo) { const im = el("img"); im.src = p.photo; im.alt = p.name; av.append(im); } else av.textContent = p.name[0];
-  const t = el("div"); t.append(el("h3", "", p.name), el("p", "", p.role));
+  const t = el("div", "who"); t.append(el("h3", "", p.name), el("p", "", p.role));
   c.append(av, t); $("teamList").append(c);
 });
 
