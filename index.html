@@ -220,6 +220,19 @@ nav.links a:hover::after{transform:scaleX(1)}
 .social .d{color:var(--mute);font-size:.9rem;margin-top:4px}
 @media (max-width:900px){.social{grid-template-columns:1fr}}
 
+/* visit */
+.visit{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:stretch}
+.visit dl{margin:30px 0 0;display:grid;gap:0;border-top:1px solid var(--line)}
+.visit dl div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.visit dt{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);padding-top:4px}
+.visit dd{margin:0;color:var(--text)}
+.visit dd small{display:block;color:var(--mute);font-size:.9rem}
+.visit .btn{margin-top:28px}
+.map{position:relative;min-height:420px;border:1px solid rgba(214,165,72,.45);background:var(--panel);overflow:hidden}
+.map::before{content:"Tirurangadi, Malappuram";position:absolute;inset:0;display:grid;place-items:center;color:var(--mute);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) hue-rotate(180deg) contrast(.92) brightness(.95)}
+@media (max-width:900px){.visit{grid-template-columns:1fr}.map{min-height:320px}}
+
 /* contact */
 #contact{background:
   linear-gradient(90deg,var(--ink) 30%,rgba(10,9,7,.82)),url("media/living.jpg") right center/auto 130% no-repeat;border-top:1px solid var(--line)}
@@ -272,7 +285,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <span><b>VIBRASPACE</b><small>INTERIORS</small></span>
     </a>
     <nav class="links" aria-label="Sections">
-      <a href="#services">Services</a><a href="#spaces">Spaces</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#team">Team</a><a href="#contact">Contact</a>
+      <a href="#services">Services</a><a href="#spaces">Spaces</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#team">Team</a><a href="#visit">Visit</a><a href="#contact">Contact</a>
     </nav>
     <a class="btn ghost" href="#contact">Get a quote</a>
   </div>
@@ -387,6 +400,24 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   </div>
 </section>
 
+<section id="visit" style="border-top:1px solid var(--line)">
+  <div class="wrap visit">
+    <div class="rv">
+      <p class="eyebrow">Visit us</p>
+      <h2>Our office in <em>Tirurangadi.</em></h2>
+      <dl>
+        <div><dt>Address</dt><dd>Vibraspace Interiors Private Limited<small>2A, TGI Centre, Tirurangadi, Malappuram, Kerala 676306</small></dd></div>
+        <div><dt>Hours</dt><dd>Monday to Saturday, 9:30 AM to 5:30 PM<small>Closed on Sunday</small></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+919544865000" style="text-decoration:none">+91 95448 65000</a></dd></div>
+      </dl>
+      <a class="btn" href="https://share.google/J6CfxJmnjV4vRNpBF">Open in Google Maps</a>
+    </div>
+    <div class="map rv" style="--d:.15s">
+      <iframe title="Map showing Vibraspace Interiors, TGI Centre, Tirurangadi" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Vibraspace+Interiors+Private+Limited,+TGI+Centre,+Tirurangadi&ll=11.0411299,75.9287161&z=16&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap contact">
     <div class="rv">
@@ -411,7 +442,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 </section>
 </main>
 
-<footer><div class="wrap"><span>© <span id="yr"></span> Vibra Space Interiors Pvt Ltd</span><span>Luxury interiors, redefined</span></div></footer>
+<footer><div class="wrap"><span>© <span id="yr"></span> Vibra Space Interiors Pvt Ltd</span><span>2A, TGI Centre, Tirurangadi, Kerala 676306</span></div></footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Project viewer">
   <div class="lb-in">
